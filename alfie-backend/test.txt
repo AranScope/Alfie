@@ -1,0 +1,109 @@
+./icons/Activity Monitor.icns
+./icons/AddPrinter.icns
+./icons/AirPort Utility.icns
+./icons/Alfred 3.icns
+./icons/App Store.icns
+./icons/AppleScript Utility.icns
+./icons/Audio MIDI Setup.icns
+./icons/Authorization Manager.icns
+./icons/Automator Installer.icns
+./icons/Automator.icns
+./icons/Backup and Sync.icns
+./icons/Bear.icns
+./icons/Bluetooth File Exchange.icns
+./icons/Bluetooth Setup Assistant.icns
+./icons/BluetoothUIServer.icns
+./icons/Books.icns
+./icons/Boot Camp Assistant.icns
+./icons/Calculator.icns
+./icons/Calendar.icns
+./icons/CalendarFileHandler.icns
+./icons/Certificate Assistant.icns
+./icons/Chess.icns
+./icons/Citrix Workspace.icns
+./icons/ColorSync Utility.icns
+./icons/Console.icns
+./icons/Contacts.icns
+./icons/Custom Shop.icns
+./icons/Dash.icns
+./icons/Dashboard.icns
+./icons/Dictionary.icns
+./icons/Digital Color Meter.icns
+./icons/Disk Utility.icns
+./icons/DiskImageMounter.icns
+./icons/Dock.icns
+./icons/FaceTime.icns
+./icons/Finder.icns
+./icons/Font Book.icns
+./icons/Games.icns
+./icons/GarageBand.icns
+./icons/Geekbench 4.icns
+./icons/Google Chrome.icns
+./icons/Grapher.icns
+./icons/HelpViewer.icns
+./icons/Home.icns
+./icons/Image Capture.icns
+./icons/Install Command Line Developer Tools.icns
+./icons/Install in Progress.icns
+./icons/Installer.icns
+./icons/Jar Launcher.icns
+./icons/Java Web Start.icns
+./icons/JetBrains Toolbox.icns
+./icons/Keychain Access.icns
+./icons/Keynote.icns
+./icons/LastPass.icns
+./icons/Launchpad.icns
+./icons/Logic Pro X.icns
+./icons/Magnet.icns
+./icons/Mail.icns
+./icons/ManagedClient.icns
+./icons/Maps.icns
+./icons/Messages.icns
+./icons/Microsoft Outlook.icns
+./icons/Migration Assistant.icns
+./icons/Minecraft.icns
+./icons/Mission Control.icns
+./icons/NetAuthAgent.icns
+./icons/News.icns
+./icons/Notes.icns
+./icons/NowPlayingWidgetContainer.icns
+./icons/OBEXAgent.icns
+./icons/ODSAgent.icns
+./icons/Paired Devices.icns
+./icons/Photo Booth.icns
+./icons/Photos.icns
+./icons/Polarr Photo Editor.icns
+./icons/Preview.icns
+./icons/Problem Reporter.icns
+./icons/QuickTime Player.icns
+./icons/Reminders.icns
+./icons/ReportPanic.icns
+./icons/Safari.icns
+./icons/ScreenSaverEngine.icns
+./icons/Screenshot.icns
+./icons/Script Editor.icns
+./icons/Script Menu.icns
+./icons/Setup Assistant.icns
+./icons/Siri.icns
+./icons/Software Update.icns
+./icons/Spark.icns
+./icons/Spotify.icns
+./icons/Spotlight.icns
+./icons/Steam.icns
+./icons/Stickies.icns
+./icons/Stocks.icns
+./icons/System Information.icns
+./icons/System Preferences.icns
+./icons/TeamViewer.icns
+./icons/Terminal.icns
+./icons/TextEdit.icns
+./icons/Ticket Viewer.icns
+./icons/Time Machine.icns
+./icons/VoiceOver Utility.icns
+./icons/VoiceOver.icns
+./icons/Weather.icns
+./icons/WhatsApp.icns
+./icons/Xcode.icns
+./icons/cloudphotosd.icns
+./icons/iTunes.icns
+./icons/qbittorrent.icns
