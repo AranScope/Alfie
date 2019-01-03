@@ -47,7 +47,6 @@ class OpenWebsiteShortcut extends Shortcut {
     }
     shell.openExternal(url);
     // ui should close
-    return true;
   }
 }
 
