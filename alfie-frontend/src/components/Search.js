@@ -96,6 +96,10 @@ class Search extends React.Component {
         selectedIndex: 0
       });
     });
+
+    ipcRenderer.on("hide", event => this.clear());
+
+    ipcRenderer.on("show", event => this.inputRef.current.focus());
   }
 
   requestFocus = index => {
@@ -104,22 +108,29 @@ class Search extends React.Component {
     });
   };
 
+  clear() {
+    if (this.inputRef.current.value !== "") {
+      this.inputRef.current.value = "";
+      this.setState({
+        searchResults: []
+      });
+    }
+  }
+
+  executeSearch() {
+    ipcRenderer.send("execute", this.state.selectedIndex);
+    this.clear();
+  }
+
   handleKeyDown = event => {
     switch (event.key) {
       case "Escape":
         ipcRenderer.send("minimize");
+        this.clear();
         break;
       case "Enter":
         if (this.state.searchResults.length > 0) {
-          ipcRenderer.send("execute", this.state.selectedIndex);
-          // window.open(
-          //   this.state.searchResults[this.state.selectedIndex].url,
-          //   "_blank"
-          // );
-          this.inputRef.current.value = "";
-          this.setState({
-            searchResults: []
-          });
+          this.executeSearch();
         }
         break;
       case "ArrowUp":
@@ -188,6 +199,14 @@ class Search extends React.Component {
     }
   };
 
+  handleClick = event => {
+    console.log("Click!");
+    console.log(event);
+    let index = event.target.index;
+    this.requestFocus(index);
+    this.executeSearch();
+  };
+
   render() {
     return (
       <>
@@ -206,6 +225,7 @@ class Search extends React.Component {
                 key={index}
                 index={index}
                 requestFocus={this.requestFocus}
+                onClick={this.handleClick}
                 selected={this.state.selectedIndex === index}
               >
                 <p>{console.log("image", result.image)}</p>

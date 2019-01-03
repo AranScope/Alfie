@@ -65,17 +65,8 @@ class SearchTree {
   }
 
   print() {
-    console.log(JSON.stringify(this._tree, null, 4));
+    // console.log(JSON.stringify(this._tree, null, 4));
   }
 }
 
 exports.SearchTree = SearchTree;
-
-// let tree = new SearchTree();
-// tree.add("hello");
-// tree.add("help");
-// tree.add("hell no");
-// tree.add("instagram");
-// tree.print();
-// console.log(tree.contains("hello"));
-// console.log(`searched for 'he', found: ${tree.find("he")}`);

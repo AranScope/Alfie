@@ -4,6 +4,6 @@ require("search-index")
     const { SEARCH, OR } = idx;
 
     SEARCH("ext:.pdf").then(result => {
-      console.log(result);
+      // console.log(result);
     });
   });

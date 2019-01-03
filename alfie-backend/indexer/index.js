@@ -27,6 +27,6 @@ require("search-index")
     });
 
     walker.on("end", () => {
-      console.log("done");
+      // console.log("done");
     });
   });

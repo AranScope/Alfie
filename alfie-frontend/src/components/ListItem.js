@@ -24,6 +24,7 @@ export default props => (
   <ListItem
     onMouseEnter={() => props.requestFocus(props.index)}
     className={props.selected ? "selected" : ""}
+    {...props}
   >
     {props.children}
   </ListItem>

@@ -1,6 +1,8 @@
 const os = require("os");
 const fs = require("fs");
 const path = require("path");
+const ora = require("ora");
+const chalk = require("chalk");
 
 const pluginFoldersMap = {
   win32: "plugins/windows",
@@ -10,6 +12,7 @@ const pluginFoldersMap = {
 
 function loadPlugins() {
   let platform = os.platform;
+  console.log(chalk.green.bold(`Loading plugins for ${platform} platform:`));
 
   if (!pluginFoldersMap.hasOwnProperty(platform)) {
     console.error(`Unsupported OS: ${platform}`);
@@ -23,9 +26,19 @@ function loadPlugins() {
   for (let pluginFolder of pluginFolders) {
     let plugins = fs
       .readdirSync(pluginFolder)
-      .map(pluginDir => path.join("..", pluginFolder, pluginDir, "Plugin"));
+      .map(pluginDir =>
+        path.join("..", "..", pluginFolder, pluginDir, "Plugin")
+      );
     for (let plugin of plugins) {
-      shortcutProviders.push(require(plugin));
+      const spinner = ora(`Loading plugin ${plugin}`).start();
+      try {
+        shortcutProviders.push(require(plugin));
+        spinner.text = `Loaded plugin ${plugin}`;
+        spinner.succeed();
+      } catch (e) {
+        spinner.text = `Failed to load plugin ${plugin}`;
+        spinner.fail();
+      }
     }
   }
 

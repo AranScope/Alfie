@@ -1,9 +1,9 @@
-const { loadPlugins } = require("./PluginLoader");
-
-const shortcutProviders = loadPlugins();
+const { loadPlugins } = require("../main/plugin-loader");
 
 class Search {
   constructor() {
+    this.shortcutProviders = loadPlugins();
+
     this.currentShortcuts = [];
     this.currentSearchTerms = [];
   }
@@ -23,16 +23,14 @@ class Search {
 
     this.currentShortcuts = [];
 
-    shortcutProviders.forEach(provider => {
+    this.shortcutProviders.forEach(provider => {
       this.currentShortcuts.push.apply(
         this.currentShortcuts,
         provider.filter(searchTerms)
       );
     });
 
-    this.currentShortcuts.forEach(shortcut => {
-      console.log(shortcut.getImageUrl(""));
-    });
+    this.currentShortcuts.forEach(shortcut => {});
     return this.currentShortcuts.map(shortcut => ({
       name: shortcut.getName(searchTerms),
       description: shortcut.getDescription(searchTerms),

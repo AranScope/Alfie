@@ -4,7 +4,7 @@ const path = require("path");
 const electron = require("electron");
 const { shell } = electron;
 
-const { Plugin, Shortcut } = require("../../../src/Plugin");
+const { Plugin, Shortcut } = require("../../../src/interfaces/Plugin");
 
 const { exec } = require("child_process");
 
@@ -42,7 +42,6 @@ class OpenFileShortcut extends Shortcut {
   }
 
   execute(searchTerms) {
-    console.log("opening ", this.uri);
     shell.openItem(this.uri);
   }
 }

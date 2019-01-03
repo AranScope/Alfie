@@ -4,8 +4,8 @@ const path = require("path");
 const electron = require("electron");
 const { shell } = electron;
 
-const { Plugin, Shortcut } = require("../../../src/Plugin");
-const { SearchTree } = require("../../../src/collections");
+const { Plugin, Shortcut } = require("../../../src/interfaces/Plugin");
+const { SearchTree } = require("../../../src/common/collections");
 
 const { exec } = require("child_process");
 const jsdom = require("jsdom");
@@ -17,7 +17,6 @@ function hasIcon(appPath) {
   if (fs.existsSync(resourcesPath)) {
     let files = fs.readdirSync(resourcesPath);
 
-    console.log(files);
     let potentialIcons = files.filter(file => /^.*.icns$/.test(file));
 
     return potentialIcons.length > 0;
@@ -32,7 +31,6 @@ function findApplicationIconUri(appPath, appName) {
   if (fs.existsSync(resourcesPath)) {
     let files = fs.readdirSync(resourcesPath);
 
-    console.log(files);
     let potentialIcons = files.filter(file => /^.*.icns$/.test(file));
 
     if (potentialIcons.length == 0) return null; // no icons in directory
@@ -134,14 +132,8 @@ class OpenMacAppPlugin extends Plugin {
         }
       })
     ).then(() => {
-      console.log("copied all apps to local filesystem");
-
-      convertLocalIconsToPng().then(() => {
-        console.log("converted all icons to png");
-      });
+      convertLocalIconsToPng().then(() => {});
     });
-
-    console.log("apps: ", appNamesAndPaths);
 
     appNamesAndPaths.forEach(({ appName, appPath, appWebIconPath }) => {
       let keys = [appName.toLowerCase()];
@@ -163,9 +155,9 @@ class OpenMacAppPlugin extends Plugin {
   }
 
   filter(searchTerms) {
-    if (searchTerms.length == 1) {
+    if (searchTerms.length >= 1) {
       return this.searchTree
-        .find(searchTerms[0].toLowerCase())
+        .find(searchTerms.join(" ").toLowerCase())
         .map(shortcutName => this.pluginsMap[shortcutName]);
     } else {
       return [];
@@ -198,7 +190,6 @@ class OpenMacAppShortcut extends Shortcut {
   }
 
   execute(searchTerms) {
-    console.log("opening ", this.uri);
     shell.openItem(this.uri);
   }
 

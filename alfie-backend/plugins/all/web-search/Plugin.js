@@ -1,7 +1,7 @@
 const electron = require("electron");
 const { shell, ipcMain } = electron;
 
-const { Plugin, Shortcut } = require("../../../src/Plugin");
+const { Plugin, Shortcut } = require("../../../src/interfaces/Plugin");
 
 class SearchOnWebsitePlugin extends Plugin {
   constructor() {

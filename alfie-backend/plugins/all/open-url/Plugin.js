@@ -1,7 +1,7 @@
 const electron = require("electron");
 const { shell } = electron;
 
-const { Plugin, Shortcut } = require("../../../src/Plugin");
+const { Plugin, Shortcut } = require("../../../src/interfaces/Plugin");
 
 class OpenWebsitePlugin extends Plugin {
   constructor() {
@@ -41,8 +41,6 @@ class OpenWebsiteShortcut extends Shortcut {
   }
 
   execute(searchTerms) {
-    console.log("execute");
-    console.log("opening URL", this.url);
     let url = this.url;
     if (!/(http:\/\/|https:\/\/).*/.test(this.url)) {
       url = `https://${this.url}`;
