@@ -1,8 +1,6 @@
-const MacShortcuts = require("../plugins/mac-apps/Plugin");
-const WebShortcuts = require("../plugins/web-search/Plugin");
-const OpenUrlShortcuts = require("../plugins/open-url/Plugin");
+const { loadPlugins } = require("./PluginLoader");
 
-const shortcutProviders = [MacShortcuts, WebShortcuts, OpenUrlShortcuts];
+const shortcutProviders = loadPlugins();
 
 class Search {
   constructor() {

@@ -1,0 +1,16 @@
+{
+  "name": "indexer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "indexer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-watch": "^0.5.9",
+    "search-index": "^1.0.0",
+    "walk": "^2.3.14"
+  }
+}

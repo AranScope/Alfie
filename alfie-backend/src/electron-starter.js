@@ -3,6 +3,8 @@ const electron = require("electron");
 const { app, BrowserWindow, shell, ipcMain, globalShortcut } = electron;
 const path = require("path");
 const url = require("url");
+const yaml = require("js-yaml");
+const fs = require("fs");
 
 const { Search } = require("./Search");
 // Keep a global reference of the window object, if you don't, the window will
@@ -42,17 +44,27 @@ function createWindow() {
       mainWindow.hide();
     }
   }
-  const ret = globalShortcut.register("Command+Shift+Space", toggleVisibility);
-  const ret2 = globalShortcut.register("Control+Space", toggleVisibility);
 
-  if (!ret) {
-    console.log("shortcut registration failed");
-  }
+  fs.readFile("./config.yml", (err, data) => {
+    if (err) {
+      console.error("error loading config");
+      process.exit(-1);
+    }
 
-  // console.log(WebShortcuts.filter(["Google"])[0].execute(["Tree shoes"]));
+    let config = yaml.safeLoad(data, "utf8");
+
+    if (config.shortcuts) {
+      for (let shortcut of config.shortcuts) {
+        globalShortcut.register(shortcut, toggleVisibility);
+      }
+    }
+
+    if (config.debug) {
+      mainWindow.webContents.openDevTools({ mode: "undocked" });
+    }
+  });
 
   // Open the DevTools.
-  // mainWindow.webContents.openDevTools({ mode: "undocked" });
 
   ipcMain.on("maximize", event => {
     mainWindow.show();

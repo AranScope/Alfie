@@ -12,7 +12,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "find": "^0.2.9",
+    "fs-walk": "0.0.2",
+    "js-yaml": "^3.12.0",
     "jsdom": "^13.1.0",
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "walk": "^2.3.14"
   }
 }
