@@ -8,6 +8,10 @@ exports.Shortcut = class Shortcut {
   getImageUrl(searchTerms) {}
 
   matches(searchTerms) {}
+
+  autoComplete(searchTerms) {
+    return "";
+  }
 };
 
 exports.Plugin = class Plugin {

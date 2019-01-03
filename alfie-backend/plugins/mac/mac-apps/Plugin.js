@@ -202,4 +202,4 @@ class OpenMacAppShortcut extends Shortcut {
   }
 }
 
-module.exports = new OpenMacAppPlugin();
+module.exports = OpenMacAppPlugin;

@@ -10,7 +10,7 @@ const pluginFoldersMap = {
   linux: "plugins/linux"
 };
 
-function loadPlugins() {
+function loadPlugins(browserWindow) {
   let platform = os.platform;
   console.log(chalk.green.bold(`Loading plugins for ${platform} platform:`));
 
@@ -32,10 +32,12 @@ function loadPlugins() {
     for (let plugin of plugins) {
       const spinner = ora(`Loading plugin ${plugin}`).start();
       try {
-        shortcutProviders.push(require(plugin));
+        let Plugin = require(plugin);
+        shortcutProviders.push(new Plugin());
         spinner.text = `Loaded plugin ${plugin}`;
         spinner.succeed();
       } catch (e) {
+        console.error(e);
         spinner.text = `Failed to load plugin ${plugin}`;
         spinner.fail();
       }

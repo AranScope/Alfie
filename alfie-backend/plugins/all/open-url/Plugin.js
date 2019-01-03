@@ -3,7 +3,7 @@ const { shell } = electron;
 
 const { Plugin, Shortcut } = require("../../../src/interfaces/Plugin");
 
-class OpenWebsitePlugin extends Plugin {
+module.exports = class OpenWebsitePlugin extends Plugin {
   constructor() {
     super();
     this.urlRegex = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/;
@@ -18,7 +18,7 @@ class OpenWebsitePlugin extends Plugin {
 
     return [];
   }
-}
+};
 
 class OpenWebsiteShortcut extends Shortcut {
   constructor(url) {
@@ -49,5 +49,3 @@ class OpenWebsiteShortcut extends Shortcut {
     // ui should close
   }
 }
-
-module.exports = new OpenWebsitePlugin();

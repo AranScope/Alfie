@@ -1,6 +1,7 @@
-function init(electron, mainWindow) {
-  const { Search } = require("../components/Search");
+const Search = require("../components/Search");
 
+function init(electron, mainWindow) {
+  const search = new Search(mainWindow);
   let { ipcMain } = electron;
 
   const bounds = electron.screen.getPrimaryDisplay().bounds;
@@ -14,7 +15,7 @@ function init(electron, mainWindow) {
   });
 
   ipcMain.on("search", (event, searchTerms) => {
-    event.sender.send("search-result", Search.search(searchTerms));
+    event.sender.send("search-result", search.search(searchTerms));
   });
 
   ipcMain.on("initial-size", (event, width, height) => {
@@ -32,7 +33,7 @@ function init(electron, mainWindow) {
   });
 
   ipcMain.on("execute", (event, index) => {
-    if (Search.execute(index)) {
+    if (search.execute(index)) {
       mainWindow.hide();
     }
   });

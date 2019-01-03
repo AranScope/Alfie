@@ -3,7 +3,7 @@ const { shell } = electron;
 
 const { Plugin, Shortcut } = require("../../../src/interfaces/Plugin");
 
-class CalculatorPlugin extends Plugin {
+module.exports = class CalculatorPlugin extends Plugin {
   constructor() {
     super();
   }
@@ -22,7 +22,7 @@ class CalculatorPlugin extends Plugin {
 
     return [];
   }
-}
+};
 
 class CalculatorShortcut extends Shortcut {
   constructor(result) {
@@ -48,5 +48,3 @@ class CalculatorShortcut extends Shortcut {
     // do nothing
   }
 }
-
-module.exports = new CalculatorPlugin();

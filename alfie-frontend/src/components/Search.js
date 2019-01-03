@@ -100,6 +100,16 @@ class Search extends React.Component {
     ipcRenderer.on("hide", event => this.clear());
 
     ipcRenderer.on("show", event => this.inputRef.current.focus());
+
+    ipcRenderer.on("notify", (event, { title, body, icon }) => {
+      let notification = new Notification(title, { body, icon });
+    });
+
+    ipcRenderer.on("set_query", (event, value) => {
+      this.inputRef.current.value = value;
+    });
+
+    ipcRenderer.on("clear_query", event => this.clear);
   }
 
   requestFocus = index => {
@@ -117,9 +127,8 @@ class Search extends React.Component {
     }
   }
 
-  executeSearch() {
+  executeShortcut() {
     ipcRenderer.send("execute", this.state.selectedIndex);
-    this.clear();
   }
 
   handleKeyDown = event => {
@@ -130,7 +139,7 @@ class Search extends React.Component {
         break;
       case "Enter":
         if (this.state.searchResults.length > 0) {
-          this.executeSearch();
+          this.executeShortcut();
         }
         break;
       case "ArrowUp":
@@ -176,14 +185,8 @@ class Search extends React.Component {
     ipcRenderer.send(channel, elem.offsetWidth, elem.offsetHeight);
   }
 
-  // executeSearch(searchTerm) {
-  //   return searchSpace.filter(item =>
-  //     item.name.toLowerCase().includes(searchTerm)
-  //   );
-  // }
-
-  handleChange = event => {
-    let searchTerms = event.target.value.trim().split(" ");
+  executeSearch(query) {
+    let searchTerms = query.trim().split(" ");
     console.log("search terms: ", searchTerms);
 
     if (searchTerms.length == 0) {
@@ -192,11 +195,11 @@ class Search extends React.Component {
       });
     } else {
       ipcRenderer.send("search", searchTerms);
-      // let searchResults = this.executeSearch(searchTerm);
-      // this.setState({
-      //   searchResults
-      // });
     }
+  }
+
+  handleChange = event => {
+    this.executeSearch(event.target.value);
   };
 
   handleClick = event => {
@@ -204,7 +207,7 @@ class Search extends React.Component {
     console.log(event);
     let index = event.target.index;
     this.requestFocus(index);
-    this.executeSearch();
+    this.executeShortcut();
   };
 
   render() {

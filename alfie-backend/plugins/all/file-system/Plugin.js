@@ -8,7 +8,7 @@ const { Plugin, Shortcut } = require("../../../src/interfaces/Plugin");
 
 const { exec } = require("child_process");
 
-class FileSystemPlugin extends Plugin {
+module.exports = class FileSystemPlugin extends Plugin {
   constructor() {
     super();
     const directories = ["/Applications"];
@@ -19,7 +19,7 @@ class FileSystemPlugin extends Plugin {
   execute(pluginName, searchTerms) {
     return this.pluginsMap[pluginName].execute();
   }
-}
+};
 
 class OpenFileShortcut extends Shortcut {
   constructor(appName, uri, imageUri) {
@@ -45,5 +45,3 @@ class OpenFileShortcut extends Shortcut {
     shell.openItem(this.uri);
   }
 }
-
-module.exports = new FileSystemPlugin();

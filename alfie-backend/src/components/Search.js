@@ -1,15 +1,24 @@
 const { loadPlugins } = require("../main/plugin-loader");
 
-class Search {
-  constructor() {
-    this.shortcutProviders = loadPlugins();
+module.exports = class Search {
+  constructor(browserWindow) {
+    this.browserWindow = browserWindow;
+    this.shortcutProviders = loadPlugins(browserWindow);
 
     this.currentShortcuts = [];
     this.currentSearchTerms = [];
+    this.lastSearch = "";
   }
 
   execute(index) {
-    this.currentShortcuts[index].execute(this.currentSearchTerms);
+    let shortcut = this.currentShortcuts[index];
+    let autocompletionResult = shortcut.autoComplete(this.currentSearchTerms);
+    if (autocompletionResult) {
+      this.browserWindow.send("set_query", autocompletionResult);
+    } else {
+      this.currentShortcuts[index].execute(this.currentSearchTerms);
+      this.browserWindow.send("clear_query");
+    }
   }
 
   search(searchTerms) {
@@ -37,6 +46,4 @@ class Search {
       image: shortcut.getImageUrl(searchTerms)
     }));
   }
-}
-
-exports.Search = new Search();
+};
