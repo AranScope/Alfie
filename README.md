@@ -6,12 +6,13 @@ Electron based open source Alfred alternative.
 
 ### All platforms
 
-| name        | description                                                                |
-| ----------- | -------------------------------------------------------------------------- |
-| calculator  | calculate a typed mathematical expression                                  |
-| file-system | show files and folders matching the search terms                           |
-| open-url    | open the typed URL in the default browser                                  |
-| web-search  | search the web for the typed expression (supports multiple search engines) |
+| name            | description                                                                |
+| --------------- | -------------------------------------------------------------------------- |
+| calculator      | calculate a typed mathematical expression                                  |
+| file-system     | show files and folders matching the search terms                           |
+| open-url        | open the typed URL in the default browser                                  |
+| web-search      | search the web for the typed expression (supports multiple search engines) |
+| common-websites | open the matching common website in the default browser                    |
 
 ### Mac
 
