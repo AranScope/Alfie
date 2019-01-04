@@ -2,6 +2,10 @@
 
 Electron based open source Alfred alternative.
 
+## Developers
+
+See `DEVELOPERS.md` for developer documentation. This readme serves as user documentation.
+
 ## Plugins
 
 ### All platforms

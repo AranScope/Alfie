@@ -3,6 +3,8 @@ const electron = require("electron");
 exports.Shortcut = class Shortcut {
   execute(searchTerms) {}
 
+  altExecute(searchTerms) {}
+
   getName(searchTerms) {}
 
   getImageUrl(searchTerms) {}
