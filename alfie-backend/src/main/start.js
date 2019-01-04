@@ -27,8 +27,8 @@ const configLoader = require("./config-loader");
       movable: false,
       alwaysOnTop: true,
       center: true,
-      resizable: false,
-      vibrancy: "light"
+      resizable: false
+      // vibrancy: "light"
     });
 
     mainWindow.setMenu(null);

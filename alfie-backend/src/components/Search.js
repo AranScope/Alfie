@@ -3,7 +3,7 @@ const { loadPlugins } = require("../main/plugin-loader");
 module.exports = class Search {
   constructor(browserWindow) {
     this.browserWindow = browserWindow;
-    this.shortcutProviders = loadPlugins(browserWindow);
+    this.shortcutProviders = loadPlugins();
 
     this.currentShortcuts = [];
     this.currentSearchTerms = [];

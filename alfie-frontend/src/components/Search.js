@@ -14,7 +14,7 @@ const ipcRenderer = debug
   : window.require("electron").ipcRenderer;
 
 const SearchContainer = styled.div`
-  width: 40rem;
+  width: 35rem;
 `;
 
 const Input = styled.input`
@@ -34,7 +34,16 @@ const Image = styled.img`
   margin-right: 0.5rem;
 `;
 
-const ItemText = styled.div``;
+const ItemText = styled.div`
+  flex: 9 9;
+`;
+
+const ItemAction = styled.img`
+  flex: 1 1;
+  height: 1rem;
+  margin-right: 0.5rem;
+  transform: scale(1, -1);
+`;
 
 const ItemName = styled.p`
   font-size: 1.5rem;
@@ -88,6 +97,7 @@ class Search extends React.Component {
     super(props);
     this.inputRef = React.createRef();
     this.containerRef = React.createRef();
+    this.config = {};
 
     ipcRenderer.on("search-result", (event, searchResults) => {
       console.log("search results", searchResults);
@@ -110,6 +120,10 @@ class Search extends React.Component {
     });
 
     ipcRenderer.on("clear_query", event => this.clear);
+
+    ipcRenderer.on("config", (event, config) => {
+      this.config = config;
+    });
   }
 
   requestFocus = index => {
@@ -133,6 +147,10 @@ class Search extends React.Component {
 
   handleKeyDown = event => {
     switch (event.key) {
+      // todo: if alt+enter are pressed, execute the alt-y shortcut
+      case "Alt":
+        // todo: display the alt-y shortcut
+        break;
       case "Escape":
         ipcRenderer.send("minimize");
         this.clear();
@@ -238,6 +256,9 @@ class Search extends React.Component {
                   <ItemName>{result.name}</ItemName>
                   <ItemDesc>{result.description}</ItemDesc>
                 </ItemText>
+                {this.state.selectedIndex === index && (
+                  <ItemAction src="return.svg" />
+                )}
               </ListItem>
             ))}
           </List>

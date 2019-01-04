@@ -1,0 +1,9 @@
+shortcuts:
+  open:
+    - Command+Shift+Space
+    - Control+Space
+    # - Command+Space
+  alt:
+    - Alt
+
+debug: false

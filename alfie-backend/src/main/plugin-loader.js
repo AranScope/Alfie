@@ -10,7 +10,7 @@ const pluginFoldersMap = {
   linux: "plugins/linux"
 };
 
-function loadPlugins(browserWindow) {
+function loadPlugins() {
   let platform = os.platform;
   console.log(chalk.green.bold(`Loading plugins for ${platform} platform:`));
 
