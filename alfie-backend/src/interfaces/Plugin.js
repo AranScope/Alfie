@@ -20,4 +20,8 @@ exports.Plugin = class Plugin {
   constructor() {}
 
   filter(searchTerms) {}
+
+  isDefault() {
+    return false;
+  }
 };

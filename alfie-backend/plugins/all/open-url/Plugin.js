@@ -46,6 +46,6 @@ class OpenWebsiteShortcut extends Shortcut {
       url = `https://${this.url}`;
     }
     shell.openExternal(url);
-    // ui should close
+    return true;
   }
 }

@@ -16,8 +16,11 @@ module.exports = class Search {
     if (autocompletionResult) {
       this.browserWindow.send("set_query", autocompletionResult);
     } else {
-      this.currentShortcuts[index].execute(this.currentSearchTerms);
+      let shouldHide = shortcut.execute(this.currentSearchTerms);
       this.browserWindow.send("clear_query");
+      if (shouldHide) {
+        this.browserWindow.hide();
+      }
     }
   }
 

@@ -1,7 +1,7 @@
 const electron = require("electron");
 const path = require("path");
 
-const { shell } = electron;
+const { clipboard } = electron;
 
 const { Plugin, Shortcut } = require("../../../src/interfaces/Plugin");
 
@@ -38,7 +38,7 @@ class CalculatorShortcut extends Shortcut {
   }
 
   getDescription(searchTerms) {
-    return "Calculate the typed expression";
+    return "Press return to copy the result to the clipboard";
   }
 
   getImageUrl(searchTerms) {
@@ -46,6 +46,7 @@ class CalculatorShortcut extends Shortcut {
   }
 
   execute(searchTerms) {
-    // do nothing
+    clipboard.writeText("" + this.result);
+    return true;
   }
 }

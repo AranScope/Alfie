@@ -22,6 +22,10 @@ module.exports = class SearchOnWebsitePlugin extends Plugin {
   filter(searchTerms) {
     return this.shortcuts.filter(shortcut => shortcut.matches(searchTerms));
   }
+
+  isDefault() {
+    return true;
+  }
 };
 
 class SearchOnWebsiteShortcut extends Shortcut {

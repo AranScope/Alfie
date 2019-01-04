@@ -43,5 +43,6 @@ class OpenFileShortcut extends Shortcut {
 
   execute(searchTerms) {
     shell.openItem(this.uri);
+    return true;
   }
 }

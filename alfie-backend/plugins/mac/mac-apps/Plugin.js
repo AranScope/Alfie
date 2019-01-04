@@ -191,6 +191,7 @@ class OpenMacAppShortcut extends Shortcut {
 
   execute(searchTerms) {
     shell.openItem(this.uri);
+    return true;
   }
 
   matches(searchTerms) {
