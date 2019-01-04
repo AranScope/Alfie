@@ -1,10 +1,10 @@
 // Modules to control application life and create native browser window
 const electron = require("electron");
-const { app } = electron;
+const { app, Menu, Tray } = electron;
 const BrowserWindow = require("../electron/CustomBrowserWindow");
-const path = require("path");
 const url = require("url");
 const ora = require("ora");
+const path = require("path");
 
 const chalk = require("chalk");
 
@@ -31,8 +31,6 @@ const configLoader = require("./config-loader");
       // vibrancy: "light"
     });
 
-    mainWindow.setMenu(null);
-
     const loadPageSpinner = ora("Loading main web page");
 
     mainWindow.loadURL(
@@ -45,6 +43,11 @@ const configLoader = require("./config-loader");
         slashes: true
       })
     );
+
+    // let tray = new Tray(path.join(__dirname, "..", "..", "icon.png"));
+    // tray.on("click", () => {
+    //   mainWindow.isVisible() ? mainWindow.hide() : mainWindow.show();
+    // });
 
     loadPageSpinner.text = "Loaded main web page";
     loadPageSpinner.succeed();
@@ -64,6 +67,10 @@ const configLoader = require("./config-loader");
       // when you should delete the corresponding element.
       mainWindow = null;
     });
+  }
+
+  if (process.platform === "darwin") {
+    app.dock.hide();
   }
 
   // This method will be called when Electron has finished

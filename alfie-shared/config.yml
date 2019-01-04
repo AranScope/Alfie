@@ -2,7 +2,7 @@ shortcuts:
   open:
     - Command+Shift+Space
     - Control+Space
-    # - Command+Space
+    - Command+Space
   alt:
     - Alt
 

@@ -2,6 +2,8 @@
 
 Electron based open source Alfred alternative.
 
+![Alfie Demo](./demo.gif)
+
 ## Developers
 
 See `DEVELOPERS.md` for developer documentation. This readme serves as user documentation.
