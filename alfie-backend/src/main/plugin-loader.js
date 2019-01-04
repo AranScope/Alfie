@@ -26,6 +26,10 @@ function loadPlugins(browserWindow) {
   for (let pluginFolder of pluginFolders) {
     let plugins = fs
       .readdirSync(pluginFolder)
+      .filter(f => {
+        let relativePath = path.join(__dirname, "..", "..", pluginFolder, f);
+        return fs.statSync(relativePath).isDirectory();
+      })
       .map(pluginDir =>
         path.join("..", "..", pluginFolder, pluginDir, "Plugin")
       );
