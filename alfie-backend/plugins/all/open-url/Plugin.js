@@ -1,4 +1,5 @@
 const electron = require("electron");
+const path = require("path");
 const { shell } = electron;
 
 const { Plugin, Shortcut } = require("../../../src/interfaces/Plugin");
@@ -24,8 +25,7 @@ class OpenWebsiteShortcut extends Shortcut {
   constructor(url) {
     super();
     this.url = url;
-    this.imageUrl =
-      "https://cdn3.iconfinder.com/data/icons/streamline-icon-set-free-pack/48/Streamline-17-512.png";
+    this.imageUrl = path.join(__dirname, "resources", "browser.svg");
   }
 
   getName(searchTerms) {

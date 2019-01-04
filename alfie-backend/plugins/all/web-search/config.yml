@@ -1,16 +1,11 @@
 sites:
   - name: Google
     url: https://google.com/search?q=
-    image: https://cdn4.iconfinder.com/data/icons/new-google-logo-2015/400/new-google-favicon-512.png
   - name: Bing
     url: https://www.bing.com/search?q=
-    image: https://cdn2.iconfinder.com/data/icons/social-icons-color/512/bing-512.png
   - name: Amazon
     url: https://www.amazon.co.uk/s/field-keywords=
-    image: https://cdn2.iconfinder.com/data/icons/social-icons-color/512/amazon-512.png
   - name: GitHub
     url: https://github.com/search?q=
-    image: https://image.flaticon.com/icons/svg/25/25231.svg
   - name: YouTube
     url: https://www.youtube.com/results?search_query=
-    image: https://cdn1.iconfinder.com/data/icons/logotypes/32/youtube-512.png

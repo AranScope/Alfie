@@ -1,4 +1,6 @@
 const electron = require("electron");
+const path = require("path");
+
 const { shell } = electron;
 
 const { Plugin, Shortcut } = require("../../../src/interfaces/Plugin");
@@ -28,8 +30,7 @@ class CalculatorShortcut extends Shortcut {
   constructor(result) {
     super();
     this.result = result;
-    this.imageUrl =
-      "https://cdn2.iconfinder.com/data/icons/circle-icons-1/64/calculator-512.png";
+    this.imageUrl = path.join(__dirname, "resources", "calculator.svg");
   }
 
   getName(searchTerms) {

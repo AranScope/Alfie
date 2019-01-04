@@ -6,7 +6,7 @@ const yaml = require("js-yaml");
 
 const { Plugin, Shortcut } = require("../../../src/interfaces/Plugin");
 
-module.exports = class SearchOnWebsitePlugin extends Plugin {
+module.exports = class CommonWebsitePlugin extends Plugin {
   constructor() {
     super();
     this.shortcuts = [];
@@ -14,7 +14,7 @@ module.exports = class SearchOnWebsitePlugin extends Plugin {
     fs.readFile(path.join(__dirname, "config.yml"), (err, data) => {
       let config = yaml.safeLoad(data, "utf8");
       this.shortcuts = config.sites.map(
-        ({ name, url }) => new SearchOnWebsiteShortcut(name, url)
+        ({ name, url }) => new OpenWebsiteShortcut(name, url)
       );
     });
   }
@@ -24,7 +24,7 @@ module.exports = class SearchOnWebsitePlugin extends Plugin {
   }
 };
 
-class SearchOnWebsiteShortcut extends Shortcut {
+class OpenWebsiteShortcut extends Shortcut {
   constructor(websiteName, url) {
     super();
     this.websiteName = websiteName;
@@ -37,40 +37,19 @@ class SearchOnWebsiteShortcut extends Shortcut {
   }
 
   getName(searchTerms) {
-    let searchQuery = searchTerms.slice(1).join(" ");
-
-    return `Search ${this.websiteName} for '${searchQuery || "..."}'`;
+    return `Open ${this.websiteName} in browser`;
   }
 
   getDescription(searchTerms) {
-    return `${this.url}${searchTerms.slice(1).join(" ")}`;
+    return this.url;
   }
 
   getImageUrl(searchTerms) {
     return this.imageUrl;
   }
 
-  autoComplete(searchTerms) {
-    if (searchTerms.length === 1) {
-      if (searchTerms[0].toLowerCase() !== this.websiteName) {
-        return this.websiteName.toLowerCase() + " ";
-      }
-    }
-    return "";
-  }
-
   execute(searchTerms) {
-    let query = searchTerms.slice(1).join(" ");
-
-    // ui should not close
-    if (query === "") return false;
-    // entered a partial keyword, so expand it first
-    else if (searchTerms[0].length != this.websiteName.length) {
-      // this.websiteName.toLowerCase()
-      // todo: We should send an update to the client with the corrected search term, and add an else
-    }
-    shell.openExternal(`${this.url}${query}`);
-    // ui should close
+    shell.openExternal(`${this.url}`);
     return true;
   }
 
@@ -79,8 +58,8 @@ class SearchOnWebsiteShortcut extends Shortcut {
       return this.websiteName
         .toLowerCase()
         .includes(searchTerms[0].toLowerCase());
-    } else if (searchTerms.length >= 2) {
-      return this.websiteName.toLowerCase() === searchTerms[0].toLowerCase();
     }
+
+    return false;
   }
 }

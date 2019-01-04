@@ -1,0 +1,34 @@
+sites:
+  - name: Google
+    url: https://google.com
+    image: https://cdn4.iconfinder.com/data/icons/new-google-logo-2015/400/new-google-favicon-512.png
+  - name: Bing
+    url: https://www.bing.com
+    image: https://cdn2.iconfinder.com/data/icons/social-icons-color/512/bing-512.png
+  - name: Amazon
+    url: https://www.amazon.co.uk
+    image: https://cdn2.iconfinder.com/data/icons/social-icons-color/512/amazon-512.png
+  - name: GitHub
+    url: https://github.com
+    image: https://image.flaticon.com/icons/svg/25/25231.svg
+  - name: YouTube
+    url: https://www.youtube.com
+    image: https://cdn1.iconfinder.com/data/icons/logotypes/32/youtube-512.png
+  - name: Facebook
+    url: https://www.facebook.com
+  - name: Twitter
+    url: https://www.twitter.com
+  - name: StackOverflow
+    url: https://www.stackoverflow.com
+  - name: Ebay
+    url: https://www.ebay.com
+  - name: Reddit
+    url: https://www.reddit.com
+  - name: Instagram
+    url: https://www.instagram.com
+  - name: Vimeo
+    url: https://www.vimeo.com
+  - name: PayPal
+    url: https://www.paypal.com
+  - name: Wikipedia
+    url: https://www.wikipedia.com
